@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'My new article',
+    date: 'Feb 25th, 2020',
+    firstParagraph: `reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee `,
+
+    secondParagraph: `yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet? `,
+
+    thirdParagraph: `geeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeez.`
   }
 ];
 
@@ -103,7 +112,8 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+
 
   Step 3: return the entire component.
 
@@ -112,3 +122,44 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const createArticle = (dataSet) => {
+  const article = document.createElement('div')
+  const title = document.createElement('h2')
+  const date = document.createElement('p')
+  const content1 = document.createElement('p')
+  const content2 = document.createElement('p')
+  const content3 = document.createElement('p')
+  const expandButton = document.createElement('SPAN')
+
+
+  article.appendChild(title)
+  article.appendChild(date)
+  article.appendChild(content1)
+  article.appendChild(content2)
+  article.appendChild(content3)
+  article.appendChild(expandButton)
+
+  article.classList.add('article')
+  date.classList.add('date')
+  expandButton.classList.add('expandButton')
+
+  title.textContent = dataSet.title
+  date.textContent = dataSet.date
+  content1.textContent = dataSet.firstParagraph
+  content2.textContent = dataSet.secondParagraph
+  content3.textContent = dataSet.thirdParagraph
+  expandButton.textContent = 'MORE'
+
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+  })
+    
+
+  return article
+}
+const articles = document.querySelector('.articles')
+data.forEach(data => {
+  articles.appendChild(createArticle(data))
+})
+console.log(btn)
+
